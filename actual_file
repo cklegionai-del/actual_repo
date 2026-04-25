@@ -1,7 +1,16 @@
 python
-# Ensure the correct path to your script is provided.
-# If you are running this from a different directory, use the full path.
-# For example:
-# python /correct/path/to/your/script/temp_test.py
+# Ensure the file name and path are correct.
+# If the file is in a different directory, provide the full path.
 
-# If the file name is correct but the path is wrong, update the path accordingly.
+# Example of corrected code assuming the file is named 'temp_test.py' and located in the home directory:
+file_path = '/Users/hichem/temp_test.py'
+
+# Check if the file exists
+import os
+if not os.path.exists(file_path):
+    raise FileNotFoundError(f"The file {file_path} does not exist.")
+
+# Proceed with reading or executing the file
+with open(file_path, 'r') as file:
+    content = file.read()
+    print(content)

@@ -1,31 +1,17 @@
 python
-import requests
-import logging
+from github import Github
 
-# Configure logging
-logging.basicConfig(filename='weather.log', level=logging.INFO)
-
-def get_weather(city):
-    api_key = 'your_api_key_here'  # Replace with your actual API key
-    base_url = "http://api.openweathermap.org/data/2.5/weather?"
-    complete_url = f"{base_url}appid={api_key}&q={city}&units=metric"
+def github_push(repo_name='actual_repo', file_path='actual_file', content='y', commit_message='Update file'):
+    # Replace 'your_github_token' with your actual GitHub token
+    g = Github("your_github_token")
     
-    response = requests.get(complete_url)
-    weather_data = response.json()
+    repo = g.get_user().get_repo(repo_name)
     
-    if weather_data['cod'] == 200:
-        main_data = weather_data['main']
-        temperature = main_data['temp']
-        logging.info(f"Temperature in {city}: {temperature}°C")
-        print(f"Temperature in {city}: {temperature}°C")
-    else:
-        error_message = weather_data.get('message', 'Error fetching data')
-        logging.error(f"Failed to retrieve weather data: {error_message}")
-        print(f"Failed to retrieve weather data: {error_message}")
+    try:
+        contents = repo.get_contents(file_path)
+        repo.update_file(contents.path, commit_message, content, contents.sha)
+    except Exception as e:
+        print(f"Failed to update file: {e}")
+        repo.create_file(file_path, commit_message, content)
 
-def github_push(repo='actual_repo', file='actual_file', content='actual_content'):
-    # Placeholder for GitHub push function
-    pass
-
-get_weather('Tunis')
-github_push(repo='weather_data', file='tunis_temperature.log', content=open('weather.log').read())
+github_push(repo='actual_repo', file='actual_file', content='y')

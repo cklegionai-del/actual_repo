@@ -1,0 +1,7 @@
+python
+# Ensure the correct path to your script is provided.
+# If you are running this from a different directory, use the full path.
+# For example:
+# python /correct/path/to/your/script/temp_test.py
+
+# If the file name is correct but the path is wrong, update the path accordingly.

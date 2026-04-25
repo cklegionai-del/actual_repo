@@ -1,6 +1,6 @@
-def github_push(repo='actual_repo', file='actual_file', content='actual_content'):
-    # Simulate GitHub push logic
-    print(f"Pushing to {repo}, file {file} with content:\n{content}")
+python
+def github_push(repo, file, content):
+    # Example implementation of github_push function
+    print(f"Pushing to repo: {repo}, file: {file} with content: {content}")
 
-# Example usage
-github_push(repo='example-repo', file='example.txt', content='This is the content.')
+github_push(repo='actual_repo', file='actual_file', content='y')

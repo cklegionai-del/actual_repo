@@ -1,2 +1,6 @@
-y = "some_value"
-github_push(repo='actual_repo', file='actual_file', content=y)
+def github_push(repo='actual_repo', file='actual_file', content='actual_content'):
+    # Simulate GitHub push logic
+    print(f"Pushing to {repo}, file {file} with content:\n{content}")
+
+# Example usage
+github_push(repo='example-repo', file='example.txt', content='This is the content.')

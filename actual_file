@@ -1,6 +1,31 @@
 python
-# It seems like you were trying to run Python code but mistakenly wrote `python` as a statement.
-# If you have a specific piece of code that needs fixing, please provide it.
-# For now, here's a simple example of a working Python script:
+import requests
+import logging
 
-print("Hello, World!")
+# Configure logging
+logging.basicConfig(filename='weather.log', level=logging.INFO)
+
+def get_weather(city):
+    api_key = 'your_api_key_here'  # Replace with your actual API key
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+    complete_url = f"{base_url}appid={api_key}&q={city}&units=metric"
+    
+    response = requests.get(complete_url)
+    weather_data = response.json()
+    
+    if weather_data['cod'] == 200:
+        main_data = weather_data['main']
+        temperature = main_data['temp']
+        logging.info(f"Temperature in {city}: {temperature}°C")
+        print(f"Temperature in {city}: {temperature}°C")
+    else:
+        error_message = weather_data.get('message', 'Error fetching data')
+        logging.error(f"Failed to retrieve weather data: {error_message}")
+        print(f"Failed to retrieve weather data: {error_message}")
+
+def github_push(repo='actual_repo', file='actual_file', content='actual_content'):
+    # Placeholder for GitHub push function
+    pass
+
+get_weather('Tunis')
+github_push(repo='weather_data', file='tunis_temperature.log', content=open('weather.log').read())

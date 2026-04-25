@@ -1,16 +1,6 @@
 python
-# Ensure the file name and path are correct.
-# If the file is in a different directory, provide the full path.
+# It seems like you were trying to run Python code but mistakenly wrote `python` as a statement.
+# If you have a specific piece of code that needs fixing, please provide it.
+# For now, here's a simple example of a working Python script:
 
-# Example of corrected code assuming the file is named 'temp_test.py' and located in the home directory:
-file_path = '/Users/hichem/temp_test.py'
-
-# Check if the file exists
-import os
-if not os.path.exists(file_path):
-    raise FileNotFoundError(f"The file {file_path} does not exist.")
-
-# Proceed with reading or executing the file
-with open(file_path, 'r') as file:
-    content = file.read()
-    print(content)
+print("Hello, World!")
